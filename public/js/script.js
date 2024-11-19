@@ -1,7 +1,7 @@
 fetch('/api/posts')
     .then(response => response.json())
     .then(posts => {
-        console.log(posts);  // Zkontroluj, co přijímáš
+        console.log(posts); 
         const postsList = document.getElementById('posts');
         posts.forEach(post => {
             const li = document.createElement('li');
