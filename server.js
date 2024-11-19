@@ -33,3 +33,14 @@ app.get('/api/posts', (req, res) => {
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
+
+app.get('/api/posts', (req, res) => {
+    connection.query('SELECT * FROM blog_posts', (err, results) => {
+        if (err) {
+            res.status(500).json({ error: 'Error retrieving posts' });
+            return;
+        }
+        res.json(results);  // Vrátí příspěvky ve formátu JSON
+    });
+});
+
