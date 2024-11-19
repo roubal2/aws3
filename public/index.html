@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Simple Blog</title>
+</head>
+<body>
+    <h1>Blog Posts</h1>
+    <ul id="posts"></ul>
+    <script>
+        fetch('/api/posts')
+            .then(response => response.json())
+            .then(posts => {
+                const postsList = document.getElementById('posts');
+                posts.forEach(post => {
+                    const li = document.createElement('li');
+                    li.textContent = `${post.title} - ${post.content}`;
+                    postsList.appendChild(li);
+                });
+            });
+    </script>
+</body>
+</html>
